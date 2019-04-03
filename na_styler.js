@@ -41,4 +41,21 @@ function setStyles() {
        // append the link element to the document head
       document.head.appendChild(pageStyle);
 
+      // getting the document using the ggeetElementbyID() method
+      var figBox = document.createElement("figure"); 
+      figBox.setAttribute("id", "styleThumbs");
+      document.getElementById("box").appendChild(figBox);
+
+      for (var i = 0; i <= 4; i++) { 
+            // sheetIMG element creating an image, loops through the atl num
+            var sheetIMG = document.createElement("img")
+            sheetIMG.setAttribute("src", "na_small" + i + ".png");
+            sheetIMG.setAttribute("alt", "na_style_" + i + ".css");
+
+            // loads different thumbnail images
+            sheetIMG.onclick = function (e) {
+                  fancy.setAttribute("href", e.target.alt);
+            }
+            figBox.appendChild("style");
+      }
 }
