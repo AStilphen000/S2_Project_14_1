@@ -49,13 +49,35 @@ function setStyles() {
       for (var i = 0; i <= 4; i++) { 
             // sheetIMG element creating an image, loops through the atl num
             var sheetIMG = document.createElement("img")
-            sheetIMG.setAttribute("src", "na_small" + i + ".png");
+            sheetIMG.setAttribute("src", "na_small_" + i + ".png");
             sheetIMG.setAttribute("alt", "na_style_" + i + ".css");
 
-            // loads different thumbnail images
+            // loads different thumbnail images 
             sheetIMG.onclick = function (e) {
-                  fancy.setAttribute("href", e.target.alt);
+                  pageStyle.setAttribute("href", e.target.alt);
             }
-            figBox.appendChild("style");
+            figBox.appendChild(sheetIMG); 
       }
+
+      // having browser load different style sheets, adds a node as the last child of a node 
+      var thumbStyles = document.createElement("style");
+      document.head.appendChild(thumbStyles); 
+
+      // css in javascript, targetting the document and style sheets to insert the css added below
+      document.styleSheets[document.styleSheets.length-1].insertRule(
+            "figure#styleThumbs { \
+                  position: absolute; \
+                  left: 0px; \
+                  bottom: 0px; \
+             }", 0);
+             document.styleSheets[document.styleSheets.length-1].insertRule(
+                   "figure#styleThumbs img { \
+                        outline: pointer; \
+                        opacity: 0.75; \
+                   }", 1);
+                   document.styleSheets[document.styleSheets.length-1].insertRule(
+                         "figure#styleThumbs img:hover { \
+                              outline: 1px solid red; \
+                              opacity: 1.0; \
+                         }", 2);
 }
